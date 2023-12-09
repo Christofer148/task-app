@@ -1,0 +1,26 @@
+@if (tasks) {
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Dead line</th>
+            </tr>
+        </thead>
+        @for (task of tasks; track task.id) {
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.deadLine }}</td>
+                <td><button>Edit</button></td>
+                @if (!task.completed) {
+                <td><button>Complete</button></td>
+                }
+            </tr>
+        }
+    </table>
+    
+}@else {
+    <p>not task found!</p>
+}
+

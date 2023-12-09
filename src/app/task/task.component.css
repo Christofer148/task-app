@@ -1,5 +1,13 @@
-h1{
+table{
     margin: 0 auto;
     padding-top: 32px;
+}
+
+tr{
+    margin: 30px;
+
+}
+
+td{
     text-align: center;
 }
