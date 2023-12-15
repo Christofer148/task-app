@@ -1,0 +1,54 @@
+.task-section{
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 15px;
+    background: #4C4C4C;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.task-details{
+    width: 50%;
+}
+
+.task-details, .dead-line, .action{
+    align-self: center;
+}
+
+.title{
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.description{
+    color: #b6b5b5;
+}
+
+.dead-line{
+    color: #789DC0;
+}
+
+.buttons-action{
+    padding: 3px;
+    border: 1px solid #b6b5b5;
+    border-radius: 3px;
+    transition: 300ms;
+}
+
+.delete-button:hover, .edit-button:hover, .complete-button:hover{
+    cursor: pointer;
+}
+
+.delete-button:hover{
+    background: red;
+}
+
+.edit-button:hover{
+    background: #2B91F6;
+}
+
+.complete-button:hover{
+    background: green;
+}

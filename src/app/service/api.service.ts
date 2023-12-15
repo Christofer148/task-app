@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Content } from '../models/responseApi';
@@ -13,7 +13,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  public getData() {
-    return this.http.get<responseApi>(this.urlApi);
+  public getData(token: HttpHeaders) {
+    return this.http.get<responseApi>(this.urlApi, { 'headers': token });
   }
 }

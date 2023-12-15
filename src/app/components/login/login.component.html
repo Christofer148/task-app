@@ -1,0 +1,48 @@
+<main>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <h3>Sign Up</h3>
+        <p class="text-danger">{{loginError}}</p>
+        <div class="username-field">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input formControlName="username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            @if (loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)) {
+            <div 
+                class="text-danger">
+                @if (loginForm.get('username')?.errors?.['required']) {
+                    <div>
+                        El Email es requerido.
+                    </div>
+                }
+                @if (loginForm.get('username')?.errors?.['email']) {
+                    <div>
+                        El Email debe tener un formato válido.
+                    </div>
+                }
+                
+            </div>
+            }  
+            
+        </div>
+        <div class="password-field">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+          @if (loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)) {
+            <div
+                class="text-danger">
+                @if (loginForm.get('password')?.errors?.['required']) {
+                    <div>
+                        El Password es requerido.
+                    </div>
+                }
+                
+            </div> 
+          }
+            
+        </div>
+        <div class="action-field">
+            <a class="register-link" href="/register">Create account</a>
+            <button type="submit" class="btn">Sign up</button>
+        </div>
+        
+    </form>
+</main>

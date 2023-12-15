@@ -1,29 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { TaskComponent } from './task/task.component';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { TaskComponent } from './components/task/task.component';
 import { ApiService } from './service/api.service';
 import { HttpClientModule } from '@angular/common/http';
-import { Content } from './models/responseApi';
+import { LoginComponent } from './components/login/login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, TaskComponent, HttpClientModule],
-  providers: [ApiService],
+  imports: [CommonModule, RouterOutlet, HttpClientModule, LoginComponent, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
 
-  data: Content[] = []
+  constructor(private router: Router){}
 
-  constructor(private dataService: ApiService){}
-
+  ngOnInit(){
+    this.router.navigateByUrl('/login');
+  }
   
 
-  ngOnInit(): void {
-    this.dataService.getData().subscribe(data => this.data = data.content);
-  }
+  
   
 }

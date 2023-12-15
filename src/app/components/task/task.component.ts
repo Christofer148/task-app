@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Content } from '../models/responseApi';
+import { Content } from '../../models/responseApi';
 
 @Component({
   selector: 'app-task',
