@@ -22,7 +22,6 @@ export class LoginService {
   login(credentials: LoginRequest): Observable<any>{
     return this.http.post<any>(environment.urlHost+"auth/login", credentials).pipe(
       tap((userData) => {
-        console.log(userData)
         sessionStorage.setItem('token', userData.token)
         this.currentUserData.next(userData.token)
         this.currentUserLoginOn.next(true)

@@ -1,1 +1,92 @@
-<p>register works!</p>
+<main>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <h3>Create new account</h3>
+        <p class="text-danger">{{registerError}}</p>
+        <div class="firstName-field">
+            <label for="inputFirstName" class="form-label">First name</label>
+            <input formControlName="firstName" type="text" class="form-control" id="inputFirstName">
+            @if (registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)) {
+              <div
+                  class="text-danger">
+                  @if (registerForm.get('firstName')?.errors?.['required']) {
+                      <div>
+                          First name is required.
+                      </div>
+                  }
+
+              </div> 
+            }
+        </div>
+        <div class="lastName-field">
+            <label for="inputLastName" class="form-label">Last name</label>
+            <input formControlName="lastName" type="text" class="form-control" id="inputLastName">
+            @if (registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched)) {
+              <div
+                  class="text-danger">
+                  @if (registerForm.get('lastName')?.errors?.['lastName']) {
+                      <div>
+                          Last name is required.
+                      </div>
+                  }
+                  
+              </div> 
+            }
+        </div>
+        <div class="username-field">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input formControlName="username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            @if (registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched)) {
+            <div 
+                class="text-danger">
+                @if (registerForm.get('username')?.errors?.['required']) {
+                    <div>
+                        El Email es requerido.
+                    </div>
+                }
+                @if (registerForm.get('username')?.errors?.['email']) {
+                    <div>
+                        El Email debe tener un formato válido.
+                    </div>
+                }
+                
+            </div>
+            }  
+            
+        </div>
+        <div class="password-field">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+          @if (registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)) {
+            <div
+                class="text-danger">
+                @if (registerForm.get('password')?.errors?.['required']) {
+                    <div>
+                        El Password es requerido.
+                    </div>
+                }
+                
+            </div> 
+          }
+            
+        </div>
+        <div class="country-field">
+            <label for="inputCountry" class="form-label">Country</label>
+            <input formControlName="country" type="text" class="form-control" id="inputCountry">
+            @if (registerForm.get('country')?.invalid && (registerForm.get('country')?.dirty || registerForm.get('country')?.touched)) {
+              <div
+                  class="text-danger">
+                  @if (registerForm.get('country')?.errors?.['country']) {
+                      <div>
+                          Last name is required.
+                      </div>
+                  }
+                  
+              </div> 
+            }
+        </div>
+        <div class="action-field">
+            <button type="submit" class="btn">Create account</button>
+        </div>
+        
+    </form>
+</main>

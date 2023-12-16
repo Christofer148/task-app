@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
       this.loginError="";
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (userData) => {
-          sessionStorage.setItem('token', userData.token);
+          sessionStorage.setItem('token', userData.token)
+          this.loginService.currentUserData.next(userData.token)
         },
         error: (errorData) => {
           console.error(errorData);
@@ -57,6 +58,5 @@ export class LoginComponent implements OnInit {
       alert("Error al ingresar los datos.");
     }
   }
-
 
 }
