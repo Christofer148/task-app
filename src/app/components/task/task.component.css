@@ -1,8 +1,11 @@
 .task-section{
+    width: 70%;
     max-width: 800px;
-    margin: 10px auto;
+    height: 15%;
+    max-height: 90px;
+    margin: 0 auto 5px auto;
     padding: 15px;
-    background: #4C4C4C;
+    background: #EEEEEE;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
@@ -10,45 +13,125 @@
 }
 
 .task-details{
-    width: 50%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
+
+.complete{
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.complete input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark{
+    position: absolute;
+    top: -10px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #EEEEEE;
+    border-radius: 30px;
+    border: 2px solid #393E46;
+    transition: 300ms;
+}
+
+/* On mouse-over, add a grey background color */
+.complete:hover input ~ .checkmark {
+    background-color: #EEEEEE;
+}
+
+/* When the checkbox is checked, add a blue background */
+.complete input:checked ~ .checkmark {
+    background-color: #00ADB5;
+    border: 2px solid #00ADB5;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.complete input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.complete .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: 2px solid #EEE;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+  
 
 .task-details, .dead-line, .action{
     align-self: center;
 }
 
 .title{
+    color: #222831;
     margin-top: 0;
     font-weight: bold;
 }
 
 .description{
-    color: #b6b5b5;
+    color: #393E46;
 }
 
 .dead-line{
-    color: #789DC0;
+    color: #393E46;
 }
 
-.buttons-action{
-    padding: 3px;
-    border: 1px solid #b6b5b5;
-    border-radius: 3px;
-    transition: 300ms;
+.action{
+    display: flex;
+    gap: 10px;
 }
 
-.delete-button:hover, .edit-button:hover, .complete-button:hover{
+.btn{
+    width: 60px;
+    border: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 5px;
+}
+
+.btn:hover{
     cursor: pointer;
 }
 
-.delete-button:hover{
-    background: red;
+.edit{
+    background-color: #00ADB5;
+    color: #EEEEEE;
 }
 
-.edit-button:hover{
-    background: #2B91F6;
-}
-
-.complete-button:hover{
-    background: green;
+.delete{
+    background: #EEEEEE;
+    color: #00ADB5;
+    border: 2px solid #00ADB5;
 }
